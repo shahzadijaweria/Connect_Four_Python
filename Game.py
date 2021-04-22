@@ -33,6 +33,7 @@ class Game:
 
 # computer play function
     def gameStates(self):
+        print(turn)
         global winner
         row = random.randrange(gameSize)
         col = random.randrange(gameSize)
@@ -50,6 +51,7 @@ class Game:
 # player play function
     def onButtonPress(self, i, j):
         global winner
+        print(turn)
         if turn == 'min':
             while self.root.array[i][j] == 0 and i < gameSize - 1:
                 i += 1
@@ -165,7 +167,7 @@ class Game:
     def createGUI(self):
         for i in range(gameSize):
             for j in range(gameSize):
-                self.button[i][j] = tkinter.Button(top, text=self.root.array[i][j], command=self.onButtonPress(i, j), width=4, height=3)
+                self.button[i][j] = tkinter.Button(top, text=self.root.array[i][j], command=lambda: self.onButtonPress(i, j), width=4, height=3)
                 self.colour(i, j)
                 self.button[i][j].grid(row=i, column=j)
 
